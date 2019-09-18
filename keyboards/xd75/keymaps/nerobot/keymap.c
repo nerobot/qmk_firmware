@@ -18,6 +18,7 @@
 // Layer shorthand
 #define _QW 0
 #define _FN 1
+#define _L1 2
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
@@ -37,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
  * | LSHIFT | '      | q      | j      | k      | x      | {      |        | }      | b      | m      | w      | v      | z      | RSHIFT |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * | LCTRL  | Fn     | Win    | LAlt   | SPACE  | SPACE  | \      |        | /      | SPACE  | SPACE  |        |        |        | RCTRL  |
+ * | LCTRL  | Fn     | Win    | LAlt   | SPACE  | LUp    | \      |        | /      | LDown  | SPACE  |        |        |        | RCTRL  |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
