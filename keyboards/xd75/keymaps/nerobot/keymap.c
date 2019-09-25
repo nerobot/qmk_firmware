@@ -32,22 +32,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * .--------------------------------------------------------------------------------------------------------------------------------------.
  * | ESC    | 1      | 2      | 3      | 4      | 5      | <      | =+     | >      | 6      | 7      | 8      | 9      | 0      |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
- * | TAB    | ;      | ,      | .      | p      | y      | [ {    |        | ] }    | f      | g      | c      | r      | l      | -_     |
+ * | TAB    | '      | ,      | .      | p      | y      | [ {    |        | ] }    | f      | g      | c      | r      | l      | -_     |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
  * | LSHIFT | a      | o      | e      | u      | i      | (      |        | )      | d      | h      | t      | n      | s      | RSHIFT |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * | CAP LK | '      | q      | j      | k      | x      | {      |        | }      | b      | m      | w      | v      | z      | ENTER  |
+ * | CAP LK | ;      | q      | j      | k      | x      | {      |        | }      | b      | m      | w      | v      | z      | ENTER  |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * | LCTRL  | Fn     | Win    | LAlt   | BACKSP | Fn     | \      |        | /      | Fn     | SPACE  |        |        |        | RCTRL  |
+ * | LCTRL  | Fn     | Win    | LAlt   | BACKSP | DEL    | \      |        | /      | Fn     | SPACE  |        |        |        | RCTRL  |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
   [_QW] = LAYOUT_ortho_5x15( /* QWERTY */
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LABK, KC_EQL,  KC_RABK, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-    KC_TAB,  KC_SCLN, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_LBRC, KC_BSLS, KC_RBRC, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_MINS,
+    KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_LBRC, KC_BSLS, KC_RBRC, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_MINS,
     KC_LSFT, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LPRN, KC_DEL,  KC_RPRN, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_RSFT,
-    KC_CAPS, KC_QUOT, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LCBR, KC_UP,   KC_RCBR, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,
-    KC_LCTL, MO(_FN), KC_LWIN, KC_LALT, KC_BSPC, MO(_FN), KC_BSLS, KC_DOWN, KC_SLSH, MO(_FN), KC_SPC,  MO(_FN), KC_RALT, KC_RGUI, KC_RCTL
+    KC_CAPS, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LCBR, KC_UP,   KC_RCBR, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,
+    KC_LCTL, MO(_FN), KC_LWIN, KC_LALT, KC_BSPC, KC_DEL , KC_BSLS, KC_DOWN, KC_SLSH, MO(_FN), KC_SPC,  MO(_FN), KC_RALT, KC_RGUI, KC_RCTL
   ),
 
 /* FUNCTION
