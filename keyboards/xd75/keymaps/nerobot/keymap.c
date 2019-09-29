@@ -26,6 +26,21 @@ enum custom_keycodes {
     QMKURL
 };
 
+enum {
+  TD_SFT_CAP = 0
+};
+
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Esc, twice for Caps Lock
+  [TD_SFT_CAP]  = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CLCK)
+// Other declarations would go here, separated by commas, if you have them
+};
+
+//In Layer declaration, add tap dance item in place of a key code
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  /* QWERTY
@@ -34,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
  * | TAB         | '      | ,      | .      | p      | y      | [ {    |        | ] }    | f      | g      | c      | r      | l      | -_     |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
- * | LSHIFT      | a      | o      | e      | u      | i      | (      |        | )      | d      | h      | t      | n      | s      | RSHIFT |
+ * | TD(TD_SFT_CAP)      | a      | o      | e      | u      | i      | (      |        | )      | d      | h      | t      | n      | s      | RSHIFT |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
  * | LCTRL / ESC | ;      | q      | j      | k      | x      | {      |        | }      | b      | m      | w      | v      | z      | ENTER  |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
@@ -45,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT_ortho_5x15( /* QWERTY */
     KC_ESC, 		KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LABK, KC_EQL,  KC_RABK, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
     KC_TAB,  		KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_LBRC, KC_BSLS, KC_RBRC, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_MINS,
-    KC_LSFT, 		KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LPRN, KC_DEL,  KC_RPRN, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_RSFT,
+    TD(TD_SFT_CAP), 		KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LPRN, KC_DEL,  KC_RPRN, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    TD(TD_SFT_CAP),
     CTL_T(KC_ESC),	KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LCBR, KC_UP,   KC_RCBR, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,
     KC_LCTL, 		MO(_FN), KC_LWIN, KC_LALT, KC_BSPC, KC_DEL , KC_BSLS, KC_DOWN, KC_SLSH, KC_SPC,  KC_SPC,  MO(_FN), KC_RALT, KC_RGUI, KC_RCTL
   ),
