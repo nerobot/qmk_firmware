@@ -53,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
  * | LCTRL / ESC     | ;      | q      | j      | k      | x      | {      |        | }      | b      		| m      		| w      | v      | z      | ENTER          |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * | LCTRL           | Fn     | Win    | LAlt   | BACKSP | DEL    | \      |        | /      | Fn / SPACE	| Fn / SPACE	|        |        |        | RCTRL          |
+ * | LCTRL           | Fn     | Win    | LAlt   | BACKSP | DEL    | \      |        | /      | _        	| Fn / SPACE	|        |        |        | RCTRL          |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
   [_QW] = LAYOUT_ortho_5x15( /* QWERTY */
-    KC_ESC, 		KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LABK, KC_EQL,  KC_RABK, KC_6,    		KC_7,    		KC_8,    KC_9,    KC_0,    _______,
-    KC_TAB,  		KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_LBRC, KC_BSLS, KC_RBRC, KC_F,    		KC_G,    		KC_C,    KC_R,    KC_L,    KC_UNDS,
-    TD(TD_SFT_CAP),	KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LPRN, KC_DEL,  KC_RPRN, KC_D,    		KC_H,    		KC_T,    KC_N,    KC_S,    TD(TD_SFT_CAP),
-    CTL_T(KC_ESC),	KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LCBR, KC_UP,   KC_RCBR, KC_B,    		KC_M,    		KC_W,    KC_V,    KC_Z,    KC_ENT,
-    KC_LCTL, 		MO(_FN), KC_LWIN, KC_LALT, KC_BSPC, KC_DEL , KC_BSLS, KC_DOWN, KC_SLSH, LT(_FN,KC_SPC),	LT(_FN,KC_SPC),	MO(_FN), KC_RALT, KC_RGUI, KC_RCTL
+    KC_ESC, 		KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LABK, 			KC_EQL,  KC_RABK, KC_6,    			KC_7,    	KC_8,    KC_9,    KC_0,    KC_DEL,
+    KC_TAB,  		KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_LBRC, 			KC_BSLS, KC_RBRC, KC_F,    			KC_G,   	KC_C,    KC_R,    KC_L,    KC_MINS,
+    TD(TD_SFT_CAP),	KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LPRN, 			KC_DEL,  KC_RPRN, KC_D,    			KC_H,    	KC_T,    KC_N,    KC_S,    TD(TD_SFT_CAP),
+    CTL_T(KC_ESC),	KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LCBR, 			KC_UP,   KC_RCBR, KC_B,    			KC_M,   	KC_W,    KC_V,    KC_Z,    CTL_T(KC_ENT),
+    KC_LCTL, 		MO(_FN), KC_LWIN, KC_LALT, KC_BSPC, KC_DEL , KC_NONUS_BSLASH, 	KC_DOWN, KC_SLSH, LT(_FN,KC_SPC),	KC_UNDS,	MO(_FN), KC_RALT, KC_RGUI, KC_RCTL
   ),
 
 /* FUNCTION
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * | PREV   | PLAY   | NEXT   | STOP   | RGB SD | RGB SI | P4     | P5     | P6     | +      | LEFT   | DOWN   | UP     | RIGHT  |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | VOL-   | MUTE   | VOL+   | APP    | RGB VD | RGB VI | P1     | P2     | P3     | PENT   |        |        |        |        |        |
+ * | VOL-   | MUTE   | VOL+   | APP    | RGB VD | RGB VI | P1     | P2     | P3     | PENT   | KC_NUHS|        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * |        |        | RGB TG | FN     | RGB RMD| RGB MD |        |  P0    | P.     | PENT   | PENT   | FN     |        |        |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F1,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NLCK, KC_SLSH, KC_ASTR, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET,
     KC_MSEL, KC_CALC, KC_MYCM, KC_MAIL, RGB_HUD, RGB_HUI, KC_P7,   KC_P8,   KC_P9,   KC_MINS, _______, _______, KC_PSCR, KC_SLCK, KC_PAUS,
     KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, RGB_SAD, RGB_SAI, KC_P4,   KC_P5,   KC_P6,   KC_PLUS, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-    KC_VOLD, KC_MUTE, KC_VOLU, KC_APP,  RGB_VAD, RGB_VAI, KC_P1,   KC_P2,   KC_P3,   KC_PENT, _______, _______, _______, _______, _______,
+    KC_VOLD, KC_MUTE, KC_VOLU, KC_APP,  RGB_VAD, RGB_VAI, KC_P1,   KC_P2,   KC_P3,   KC_PENT, KC_NUHS, _______, _______, _______, _______,
     _______, _______, _______, RGB_TOG, RGB_RMOD,RGB_MOD, _______, KC_P0,   KC_PDOT, KC_PENT, KC_PENT, MO(_FN), _______, _______, _______
   ),
 
