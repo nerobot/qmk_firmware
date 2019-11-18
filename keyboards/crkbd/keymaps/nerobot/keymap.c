@@ -69,11 +69,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT( \
   //,-----------------------------------------.                ,-----------------------------------------.
-      RESET,RGBRST, KC_VOLU, KC_VOLD, KC_NO, KC_NO,                  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+	 RESET,				RGBRST, 	KC_VOLU, 	KC_VOLD, 	KC_NO, 		KC_NO,                  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    RGB_TOG,RGB_HUI,RGB_SAI,RGB_VAI,KC_NO,KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+    LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    RGB_MOD,RGB_HUD,RGB_SAD,RGB_VAD,KC_NO,KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+     LALT(KC_F4),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                 KC_LGUI, RAISE,KC_SPC,   KC_ENT, LOWER,KC_RALT \
                               //`--------------------'  `--------------------'
