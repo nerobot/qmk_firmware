@@ -14,3 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 TAP_DANCE_ENABLE=yes
+STENO_ENABLE = yes
+VIRTSER_ENABLE = yes
+FORCE_NKRO = yes
+MOUSEKEY_ENABLE = no

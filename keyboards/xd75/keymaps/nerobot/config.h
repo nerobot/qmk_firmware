@@ -18,3 +18,4 @@
 
 // place overrides here
 #define TAPPING_TERM 200
+#define FORCE_NKRO

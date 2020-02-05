@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+#include "keymap_steno.h"
+
 extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
@@ -17,14 +19,14 @@ extern uint8_t is_master;
 #define _LOWER 1
 #define _RAISE 2
 #define _ADJUST 3
+#define _PLVR 4
 
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
-  BACKLIT,
-  RGBRST
+  PLVR,
 };
 
 enum macro_keycodes {
@@ -71,11 +73,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
 	 RESET,   		KC_F1,   	KC_F2,   	KC_F3,   	KC_F4,   	KC_F5, 							KC_F6,   	KC_F7,   	KC_F8,   	KC_F9,   	KC_F10,  	RESET,
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+    LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(_PLVR),\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     LALT(KC_F4),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+     TG(_PLVR),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LALT(KC_F4),\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                 KC_LGUI, RAISE,KC_SPC,   KC_ENT, LOWER,KC_RALT \
+                              //`--------------------'  `--------------------'
+  ),
+  
+  [_PLVR] = LAYOUT( \
+  //,-----------------------------------------.                ,-----------------------------------------.
+	 RESET,   		KC_F1,   	KC_F2,   	KC_F3,   	KC_F4,   	KC_F5, 							KC_F6,   	KC_F7,   	KC_F8,   	KC_F9,   	KC_F10,  	RESET,
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+    KC_MPRV, 		STN_S1, 	STN_TL, 	STN_PL, 	STN_HL, 	STN_ST1,                 STN_ST3, 	STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+     TG(_PLVR),   		STN_S2, 	STN_KL, 	STN_WL, 	STN_RL, 	STN_ST2,                 STN_ST4, 	STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
+  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
+														STN_A,  	STN_O,KC_SPC,  		KC_ENT, STN_E,   	STN_U \
                               //`--------------------'  `--------------------'
   )
 };
@@ -97,6 +111,8 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 }
 
 void matrix_init_user(void) {
+	  steno_set_mode(STENO_MODE_GEMINI);
+
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
     #endif
@@ -202,7 +218,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       return false;
-    case RGBRST:
+/*    case RGBRST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
           eeconfig_update_rgblight_default();
@@ -211,6 +227,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       break;
+	  */
   }
   return true;
 }

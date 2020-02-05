@@ -9,3 +9,7 @@ SRC +=  ./lib/glcdfont.c \
         # ./lib/host_led_state_reader.c \
         # ./lib/timelogger.c \
 
+STENO_ENABLE = yes
+VIRTSER_ENABLE = yes
+FORCE_NKRO = yes
+MOUSEKEY_ENABLE = no
