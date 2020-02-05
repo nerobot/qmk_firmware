@@ -19,14 +19,17 @@ extern uint8_t is_master;
 #define _LOWER 1
 #define _RAISE 2
 #define _ADJUST 3
-#define _PLVR 4
+#define _PLOVER 4
+
 
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
-  PLVR,
+  PLOVER,
+  BACKLIT,
+  RGBRST
 };
 
 enum macro_keycodes {
@@ -61,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------------------.                	,-----------------------------------------------------------------------.
      KC_ESC,		LSFT(KC_1),	LSFT(KC_2),	LSFT(KC_3),	LSFT(KC_4),	LSFT(KC_5),						LSFT(KC_6),	LSFT(KC_7),	LSFT(KC_8),	LSFT(KC_9),	LSFT(KC_0),	LALT(KC_F4), \
   //|-----------+-------------+----------+----------+-----------+-----------|                	|-----------+-----------+€-----------+-----------+-----------+-----------|
-     KC_MPRV, 		KC_PIPE, 	KC_LBRC, 	KC_RBRC, 	KC_PPLS,  	KC_QUES,						KC_PLUS, 	KC_LEFT, 	KC_DOWN, 	KC_UP  , 	KC_RGHT, 	_______,
+     KC_MPRV, 		LSFT(KC_NUBS), 	KC_LBRC, 	KC_RBRC, 	KC_PPLS,  	KC_QUES,						KC_PLUS, 	KC_LEFT, 	KC_DOWN, 	KC_UP  , 	KC_RGHT, 	_______,
   //|-----------+-------------+----------+----------+-----------+-----------|                	|-----------+-----------+-----------+-----------+-----------+-----------|
      KC_F1,   		KC_F1,   	KC_F2,   	KC_F3,   	KC_F4,   	KC_F5, 							KC_F6,   	KC_F7,   	KC_F8,   	KC_F9,   	KC_F10,  	RESET,
   //|-----------+-------------+----------+----------+-----------+-----------+------|  |---------+-----------+-----------+-----------+-----------+-----------+------------|
@@ -73,25 +76,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
 	 RESET,   		KC_F1,   	KC_F2,   	KC_F3,   	KC_F4,   	KC_F5, 							KC_F6,   	KC_F7,   	KC_F8,   	KC_F9,   	KC_F10,  	RESET,
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(_PLVR),\
+    LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		TO( _PLOVER),\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     TG(_PLVR),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LALT(KC_F4),\
+     TG( _PLOVER),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 		KC_NO, 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                 KC_LGUI, RAISE,KC_SPC,   KC_ENT, LOWER,KC_RALT \
                               //`--------------------'  `--------------------'
   ),
-  
-  [_PLVR] = LAYOUT( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-	 RESET,   		KC_F1,   	KC_F2,   	KC_F3,   	KC_F4,   	KC_F5, 							KC_F6,   	KC_F7,   	KC_F8,   	KC_F9,   	KC_F10,  	RESET,
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    KC_MPRV, 		STN_S1, 	STN_TL, 	STN_PL, 	STN_HL, 	STN_ST1,                 STN_ST3, 	STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     TG(_PLVR),   		STN_S2, 	STN_KL, 	STN_WL, 	STN_RL, 	STN_ST2,                 STN_ST4, 	STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
-  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-														STN_A,  	STN_O,KC_SPC,  		KC_ENT, STN_E,   	STN_U \
-                              //`--------------------'  `--------------------'
-  )
+    [_PLOVER] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_LBRC,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+       KC_TAB,    STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+    TG( _PLOVER), STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                  STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+											STN_A,  STN_O,  KC_SPC,     KC_ENT,  STN_E,   STN_U \
+	)
 };
 
 int RGB_current_mode;
@@ -120,6 +121,7 @@ void matrix_init_user(void) {
     #ifdef SSD1306OLED
         iota_gfx_init(!has_usb());   // turns on the display
     #endif
+	steno_set_mode(STENO_MODE_GEMINI);
 }
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
