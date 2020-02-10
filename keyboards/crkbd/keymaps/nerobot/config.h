@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../../config.h"
 
-#define FORCE_NKRO
+//#define FORCE_NKRO
  
 
 //#define USE_MATRIX_I2C
@@ -39,10 +39,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_FORCE_HOLD
-#define TAPPING_FORCE_HOLD_PER_KEY
-#define TAPPING_TERM 150
+//#define PERMISSIVE_HOLD
+//#define TAPPING_FORCE_HOLD
+//#define TAPPING_FORCE_HOLD_PER_KEY
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
+//#define IGNORE_MOD_TAP_INTERRUPT
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
@@ -54,6 +57,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_VAL_STEP 17
 #endif
 
-#define FORCE_NKRO
+//#define FORCE_NKRO
 
 

@@ -10,7 +10,7 @@ SRC +=  ./lib/glcdfont.c \
         # ./lib/timelogger.c \
 
 
-FORCE_NKRO = yes
-COMBO_ENABLE = yes
-STENO_ENABLE = yes
+FORCE_NKRO = no
+COMBO_ENABLE = no
+STENO_ENABLE = no
 MOUSEKEY_ENABLE = no

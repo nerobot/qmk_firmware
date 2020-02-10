@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-#include "keymap_steno.h"
+/*#include "keymap_steno.h"*/
 
 extern keymap_config_t keymap_config;
 
@@ -36,21 +36,21 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
-uint16_t get_tapping_term(uint16_t keycode)
-{
-    switch (keycode)
-    {
-        case ALT_T(KC_SPC):
-            return 1000;
-            break;
-        case CTL_T(KC_BSPC):
-            return 1000;
-            break;
-        default:
-            return TAPPING_TERM;
-            break;
-    }
-}
+/*uint16_t get_tapping_term(uint16_t keycode)*/
+/*{*/
+    /*switch (keycode)*/
+    /*{*/
+        /*case ALT_T(KC_SPC):*/
+            /*return 3000;*/
+            /*break;*/
+        /*case CTL_T(KC_BSPC):*/
+            /*return 3000;*/
+            /*break;*/
+        /*default:*/
+            /*return 3000;*/
+            /*break;*/
+    /*}*/
+/*}*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_DVORAK] = LAYOUT( \
@@ -94,21 +94,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
     LCTL(LALT(KC_DEL)),	RGB_HUI,	RGB_SAI,	RGB_VAI,	KC_NO,		KC_NO,                 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		TO( _PLOVER),\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     TG( _PLOVER),		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 		KC_NO, 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+     _______,		RGB_HUD,	RGB_SAD,	RGB_VAD,	KC_NO,		KC_NO,                 		KC_NO, 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                 KC_LGUI, RAISE,KC_SPC,   KC_ENT, LOWER,KC_RALT \
                               //`--------------------'  `--------------------'
   ),
-    [_PLOVER] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_LBRC,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TAB,    STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    TG( _PLOVER), STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                  STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-											STN_A,  STN_O,  KC_SPC,     KC_ENT,  STN_E,   STN_U \
-	)
+/*    [_PLOVER] = LAYOUT( \*/
+  /*//,-----------------------------------------------------.                    ,-----------------------------------------------------.*/
+       /*KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_LBRC,\*/
+  /*//|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|*/
+       /*KC_TAB,    STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,\*/
+  /*//|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|*/
+    /*TG( _PLOVER), STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                  STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,\*/
+  /*//|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|*/
+											/*STN_A,  STN_O,  KC_SPC,     KC_ENT,  STN_E,   STN_U \*/
+	/*)*/
 };
 
 int RGB_current_mode;
@@ -128,7 +128,7 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 }
 
 void matrix_init_user(void) {
-	  steno_set_mode(STENO_MODE_GEMINI);
+	  /*steno_set_mode(STENO_MODE_GEMINI);*/
 
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
@@ -137,7 +137,7 @@ void matrix_init_user(void) {
     #ifdef SSD1306OLED
         iota_gfx_init(!has_usb());   // turns on the display
     #endif
-	steno_set_mode(STENO_MODE_GEMINI);
+	/*steno_set_mode(STENO_MODE_GEMINI);*/
 }
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
