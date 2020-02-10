@@ -21,6 +21,7 @@ extern uint8_t is_master;
 #define _ADJUST 3
 #define _PLOVER 4
 
+
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
   LOWER,
@@ -29,7 +30,6 @@ enum custom_keycodes {
   PLOVER,
   BACKLIT,
   RGBRST
-  
 };
 
 enum macro_keycodes {
@@ -112,6 +112,8 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 }
 
 void matrix_init_user(void) {
+	  steno_set_mode(STENO_MODE_GEMINI);
+
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
     #endif
@@ -218,7 +220,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       return false;
-    case RGBRST:
+/*    case RGBRST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
           eeconfig_update_rgblight_default();
@@ -227,6 +229,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       break;
+	  */
   }
   return true;
 }
