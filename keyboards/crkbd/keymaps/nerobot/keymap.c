@@ -36,6 +36,22 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
+uint16_t get_tapping_term(uint16_t keycode)
+{
+    switch (keycode)
+    {
+        case ALT_T(KC_SPC):
+            return 1000;
+            break;
+        case CTL_T(KC_BSPC):
+            return 1000;
+            break;
+        default:
+            return TAPPING_TERM;
+            break;
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_DVORAK] = LAYOUT( \
   //,-----------------------------------------------------------------------.                	,-----------------------------------------------------------------------.
@@ -45,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----------+-------------+----------+----------+-----------+-----------|                	|-----------+-----------+-----------+-----------+-----------+-----------|
      CTL_T(KC_ESC),	KC_SCLN,	KC_Q,		KC_J,		KC_K,		KC_X,                   		KC_B,		KC_M,		KC_W,		KC_V,		KC_Z,		CTL_T(KC_ENT),\
   //|-----------+-------------+----------+----------+-----------+-----------+------|  |---------+-----------+-----------+-----------+-----------+-----------+------------|
-												SFT_T(KC_ESC),	RAISE, 	CTL_T(KC_BSPC),		ALT_T(KC_SPC),		LOWER,		SFT_T(KC_RALT) \
+												SFT_T(KC_ESC),	RAISE, 	CTL_T(KC_BSPC),		ALT_T(KC_SPC),		LOWER,		SFT_T(KC_ENT) \
                                              //`-----------------------------------'  `--------------------'
   ),
   [_LOWER] = LAYOUT( \
